@@ -1,0 +1,7 @@
+# Ignore node_modulesin node server
+node_server/node_modules/
+
+#Ignore node_modulesin ang server
+angweb/node_modules/
+
+
