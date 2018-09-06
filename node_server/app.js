@@ -28,8 +28,8 @@ app.use((request,response,next) => {
   next();    
 });
 
-
+app.use('/oauth', require('./routes/oauth/codechef'));
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users/lol', usersRouter);
 
 module.exports = app;
