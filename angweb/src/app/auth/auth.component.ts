@@ -22,6 +22,7 @@ export class AuthComponent implements OnInit {
   }
 
   onClickMe() {
-    window.open(this.codeChefUrl, '_blank');
+    var data = window.open(this.codeChefUrl, '_blank');
+    console.log(data);
   }
 }

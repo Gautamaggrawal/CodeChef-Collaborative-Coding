@@ -1,12 +1,17 @@
 {
     "angularUrl": ["http://localhost:4200","http://127.0.0.1:4200","http://172.31.85.156:4200"],
     
-    "codeChefApiUrl": "https://api.codechef.com",
 
     "__comment__redirectUrl":"codechef sends authorization codeto redirectUrl",
     "redirectUrl": "http://localhost:3000/oauth/codechef",
     
     "client_id": "21a85d79b82b47b5f2b4041de91efd2f",
-    "client_secret": "74de460280f29a02c6a6c1a43640d295"
+    "client_secret": "74de460280f29a02c6a6c1a43640d295",
+    
+    "cc_apiUrl" : {
+        "baseUrl": "https://api.codechef.com",
+        "loggedInUser" : "https://api.codechef.com/users/me",
+        "token": "https://api.codechef.com/oauth/token"
+    }
 }
 

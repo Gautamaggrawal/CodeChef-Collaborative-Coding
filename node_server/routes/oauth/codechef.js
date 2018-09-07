@@ -3,30 +3,36 @@ var request = require('request-promise');
 
 var oauthFunc = require('../../shared/oauthFunc');
 var config = require('../../config.json');
-var db = require('../../shared/database');
+var dbHelper = require('../../shared/database');
 
 var router = express.Router();
 
 
 router.get('/codechef', function(req, res, next) {
     
-    // Exchange authorization code for access token.
-    request.post(oauthFunc.getAuthConfig(req.query.code))
+    /* Exchange authorization code for access token.
+    *  getAuthConfig returns the auth configuration 
+    */
+    var data =  request.post(oauthFunc.getAuthConfig(req.query.code))
     .then(function(res){
         console.log(res+'reached post call');
         var response = JSON.parse(res);
+        var access_token = response.result.data.access_token;
+        var refresh_token = response.result.data.refresh_token;
         console.log('sad '+ response.result.data.access_token);
         var getUseroptions = {
-            uri: config.codeChefApiUrl + '/users/me',
+            uri: config.cc_apiUrl.loggedInUser,
             headers: {
                 'Accept': 'application/json',
                 'Authorization': 'Bearer ' +  response.result.data.access_token
             }
         };
-        request.get(getUseroptions)
+        return request.get(getUseroptions)
         .then(function(res){
             var response = JSON.parse(res);
+            dbHelper.insertUser(response.result.data.content.username, access_token, refresh_token);
             console.log(response.result.data.content.username);
+            return {'hello':'Hi from Server'};
         }).catch(function(err){
             //error while requesting current user
             console.log(err + "\nInvalid Access Token");
@@ -36,6 +42,7 @@ router.get('/codechef', function(req, res, next) {
         console.log(err + "\nInvalid Authorization Code");
     });
     
+    res.redirect(config.angularUrl[0]+'/home/?data='+data);
     
 });
 

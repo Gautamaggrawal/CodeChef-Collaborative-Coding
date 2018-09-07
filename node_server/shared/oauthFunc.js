@@ -10,7 +10,7 @@ function getAuthConfig (code){
     };
 
     var authOptions = {
-        uri: config.codeChefApiUrl + '/oauth/token',
+        uri: config.cc_apiUrl.token,
         body: JSON.stringify(params),
         method: 'POST',
         headers: {
