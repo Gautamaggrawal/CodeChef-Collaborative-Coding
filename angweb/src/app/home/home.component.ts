@@ -8,14 +8,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  userData : string;
+  access_token : string;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params =>{
-      this.userData = JSON.parse(params['data']);
-      console.log(this.userData);
+      this.access_token = params['access_token'];
+      console.log(this.access_token);
     });
   }
 
