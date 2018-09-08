@@ -7,26 +7,38 @@ const adapter = new FileSync('db.json',{
 
 db = low(adapter);
 
+/*
+    insertUser checks if user already exists in db.
+    if exists updates the refres_token and access_token
+    else inserts the new user into db.
+*/
+
 exports.insertUser = function(id, access_token, refresh_token){
-  console.log(db.get('users').find({id: id}).value());
-  console.log('value'  + db.get('users').has({id: id}).value());
   var user = db.get('users').find({id: id}).value();
-  console.log(user);
   if((user == undefined)){
-    console.log("user is a new");
+    console.log("user is a new user");
     db.get('users')
-      .push({
-        id : id,
-        access_token : access_token,
+    .push({
+        id : id, 
+        access_token : access_token, 
         refresh_token : refresh_token
-      }).write();
-  }else{
-    console.log("user already exists");
-    db.get('users').update({
-      access_token : access_token,
-      refresh_token : refresh_token
     }).write();
+  } else{
+    console.log("user already exists");
+    exports.updateUser(id, access_token,refresh_token);
   };
 }
 
-//module.exports = db;
+
+/*
+    Updates the user if already exists.
+*/
+
+exports.updateUser = function(id, access_token, refresh_token) {
+    db.get('users')
+    .find({id: id})
+    .assign({
+      access_token : access_token,
+      refresh_token : refresh_token
+    }).write();
+}
