@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  codeChefLoginUrl: 'https://api.codechef.com/oauth/authorize?response_type=code&client_id=21a85d79b82b47b5f2b4041de91efd2f&state=xyz&redirect_uri=http://localhost:3000/oauth/codechef',
+  codeChefBaseUrl: "https://api.codechef.com"
 };
 
 /*

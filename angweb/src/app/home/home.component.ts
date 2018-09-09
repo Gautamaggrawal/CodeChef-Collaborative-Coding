@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
+import { Router } from '@angular/router';
+import { UserService } from '../shared/service/user.service';
+ 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,14 +10,22 @@ import { ActivatedRoute } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   access_token : string;
+  username: string;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private router: Router,
+    private userService: UserService) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params =>{
-      this.access_token = params['access_token'];
-      console.log(this.access_token);
+    this.userService.getCurrentUser().subscribe(data =>{
+      var res = JSON.parse(JSON.stringify(data));
+      this.username = res.result.data.content.username;
+      console.log(data);
     });
+  }
+
+  Logout() {
+    localStorage.removeItem('userToken');
+    this.router.navigate(['/login']);
   }
 
 }
