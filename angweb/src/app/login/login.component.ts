@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../shared/service/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,19 +15,23 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router ) { }
+    private router: Router,
+    public authService: AuthService ) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params =>{
-      this.access_token = params['access_token'];
-      if(this.access_token != undefined) {
-        console.log("access token Recived - " + this.access_token);
-        localStorage.setItem('userToken',this.access_token);
-        this.router.navigate(['/home']);
-      }else{
-        this.loginUrl = environment.codeChefLoginUrl;
-      }
-    });
+    if(this.authService.isAuthenticated()){
+      this.router.navigate['/home'];
+    } else{ 
+      this.route.queryParams.subscribe(params =>{
+        this.access_token = params['access_token'];
+        if(this.access_token != undefined) {
+          console.log("access token Recived - " + this.access_token);
+          this.authService.doLogin(this.access_token);
+        }else{
+          this.loginUrl = environment.codeChefLoginUrl;
+        }
+      });
+    }
   }
 
 }
