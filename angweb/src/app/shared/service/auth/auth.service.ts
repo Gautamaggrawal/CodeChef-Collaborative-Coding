@@ -14,12 +14,16 @@ export class AuthService {
   }
   
   isAuthenticated() {
-    if(localStorage.getItem['userToken']) {
+    if(localStorage.getItem('userToken') != null) {
       return true;
     }else {
       return false;
     }
   }
 
-  
+  Logout() {
+    localStorage.removeItem('userToken');
+    this.router.navigate(['/login']);
+  }
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../shared/service/user.service';
+import { AuthService } from '../shared/service/auth/auth.service';
  
 @Component({
   selector: 'app-home',
@@ -9,11 +10,16 @@ import { UserService } from '../shared/service/user.service';
 })
 export class HomeComponent implements OnInit {
 
+  practicePrb1: 'CHN04';
+  practicePrb2: 'SPOOL';
+
   access_token : string;
   username: string;
 
-  constructor(private router: Router,
-    private userService: UserService) { }
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.userService.getCurrentUser().subscribe(data =>{
@@ -23,9 +29,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  
+  onClickProblem(problemCode) {
+    console.log(problemCode);
+    this.router.navigate(['/problem/',problemCode]);
+  }
+
   Logout() {
-    localStorage.removeItem('userToken');
-    this.router.navigate(['/login']);
+    this.authService.Logout();
   }
 
 }

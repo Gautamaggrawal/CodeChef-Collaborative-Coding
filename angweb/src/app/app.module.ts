@@ -9,12 +9,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { ProblemComponent } from './home/problem/problem.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ProblemComponent
   ],
   imports: [
     HttpClientModule,
@@ -23,11 +25,11 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule
   ],
   providers: [AuthGuard,
-  {
-    provide : HTTP_INTERCEPTORS,
-    useClass : AuthInterceptor,
-    multi : true
-  }
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass : AuthInterceptor,
+      multi : true
+    }
   ],
   bootstrap: [AppComponent]
 })

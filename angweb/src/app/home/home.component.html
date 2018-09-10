@@ -2,11 +2,17 @@
     <nav>
     <a (click)="Logout()">Logout</a>
     </nav>
-  </div>
+</div>
+<div>
+  <h1>
+    <i class="material-icons md-36">face</i>
+    Hi {{username}}
+  </h1>
+</div>
 
-<p>
-  home works!
-</p>
-<h1>
-  Hi {{username}}
-</h1>
+<div>
+<button type="button" class="btn btn-primary prbButton" (click)="onClickProblem('CHN04')">Solve Problem 1</button>
+</div>
+<div>
+<button type="button" class="btn btn-primary prbButton" (click)="onClickProblem(SPOOL)">Solve Problem 2</button>
+</div>

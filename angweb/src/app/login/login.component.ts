@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if(this.authService.isAuthenticated()){
-      this.router.navigate['/home'];
+      console.log("already logged In");
+      this.router.navigate(['/home']);
     } else{ 
       this.route.queryParams.subscribe(params =>{
         this.access_token = params['access_token'];
