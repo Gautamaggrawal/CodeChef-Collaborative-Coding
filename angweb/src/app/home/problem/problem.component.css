@@ -2,9 +2,15 @@
     content: "";
     margin: 2em;
     display: block;
-    font-size: 24%;
+    font-size: 28%;
 }
 
 .container {
     background-color:beige;
+    margin-top: 20px;
+    width: 40%;
+}
+
+:host >>> h1{
+    margin-bottom: 20px;
 }

@@ -1,9 +1,4 @@
-<p>
-  problem works!
-</p>
-<div class="container">
-  <div *ngIf="problem" >
-    <h1>{{problem.result.data.content.problemName}}</h1><br>
-    <p [innerHTML]="problem.result.data.content.body"></p>
-  </div>
+<div *ngIf="problem" class="container">
+  <h1>{{problem.result.data.content.problemName}}</h1>
+  <p [innerHTML]="problem.result.data.content.body"></p>
 </div>
