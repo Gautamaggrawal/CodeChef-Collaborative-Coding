@@ -9,6 +9,8 @@ import { ProblemService } from '../../shared/service/problem/problem.service';
 })
 export class ProblemComponent implements OnInit {
   
+  problem;
+
   constructor(private route: ActivatedRoute,
     private problemService: ProblemService) { }
 
@@ -21,7 +23,8 @@ export class ProblemComponent implements OnInit {
     console.log(problemCode);
     this.problemService.getProblem(problemCode)
     .subscribe(data => {
-      //this.problem = JSON.data;
+      this.problem = data;
+      console.log(this.problem.result.data.content.body);
       console.log(JSON.stringify(data));
     });
   }
