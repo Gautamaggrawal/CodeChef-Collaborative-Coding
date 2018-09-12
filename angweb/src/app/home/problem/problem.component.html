@@ -2,3 +2,24 @@
   <h1>{{problem.result.data.content.problemName}}</h1>
   <p [innerHTML]="problem.result.data.content.body"></p>
 </div>
+
+<ng-container *ngIf="startVideoClicked;then showFrame else showStartVideo" ></ng-container>
+
+<ng-template #showStartVideo >
+  <div id="rightCorner">
+    <button class="video" (click)="onStartVideo()">Start Video</button>
+  </div>
+</ng-template>
+
+<ng-template #showFrame>
+  <div id="rightCorner">
+    <iframe id="videoFrame" 
+    src="https://tokbox.com/embed/embed/ot-embed.js?embedId=91bd5b16-f7f2-4740-ac72-2cf562a70fd4&room=DEFAULT_ROOM&iframe=true" 
+    scrolling="no" width=350 height=300 allow="microphone; camera" >
+    </iframe>
+    <div class="card text-center" id="videoFrame" width=350 height=300;>
+      <button class="card-body" ngxClipboard [cbContent]='videoShareUrl'>{{videoShareUrl}}
+      </button>
+    </div>
+  </div>
+</ng-template>

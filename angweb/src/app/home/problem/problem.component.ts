@@ -9,6 +9,8 @@ import { ProblemService } from '../../shared/service/problem/problem.service';
 })
 export class ProblemComponent implements OnInit {
   
+  startVideoClicked: boolean = false;
+  videoShareUrl:string = 'This is some text within a card body.';
   problem;
 
   constructor(private route: ActivatedRoute,
@@ -24,8 +26,14 @@ export class ProblemComponent implements OnInit {
     this.problemService.getProblem(problemCode)
     .subscribe(data => {
       this.problem = data;
-      console.log(this.problem.result.data.content.body);
-      console.log(JSON.stringify(data));
+      //console.log(this.problem.result.data.content.body);
+      //console.log(JSON.stringify(data));
     });
   }
+
+  onStartVideo() {
+    this.startVideoClicked = true;
+    console.log(this.startVideoClicked);
+  }
+
 }
