@@ -3,7 +3,7 @@
   <p [innerHTML]="problem.result.data.content.body"></p>
 </div>
 
-<ng-container *ngIf="startVideoClicked;then showFrame else showStartVideo" ></ng-container>
+<ng-container *ngIf="startVideoClicked;then showFrame else showStartVideo"></ng-container>
 
 <ng-template #showStartVideo >
   <div id="rightCorner">

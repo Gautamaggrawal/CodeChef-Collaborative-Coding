@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { ProblemService } from '../../shared/service/problem/problem.service';
+import { UserService } from '../../shared/service/user.service';
 
 @Component({
   selector: 'app-problem',
@@ -10,14 +12,19 @@ import { ProblemService } from '../../shared/service/problem/problem.service';
 export class ProblemComponent implements OnInit {
   
   startVideoClicked: boolean = false;
-  videoShareUrl:string = 'This is some text within a card body.';
+  videoShareUrl:string; 
   problem;
 
-  constructor(private route: ActivatedRoute,
-    private problemService: ProblemService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private problemService: ProblemService,
+    private userService: UserService) { }
 
   ngOnInit() {
     this.getProblem();
+    this.userService.getUsername().subscribe(res=>{
+      this.videoShareUrl = 'http://localhost:4200/home/CHN04?video='+res;
+    });
   }
 
   getProblem(): void {

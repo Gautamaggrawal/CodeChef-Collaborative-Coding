@@ -16,9 +16,8 @@ export class HomeComponent implements OnInit {
     private authService: AuthService) { }
 
   ngOnInit() {
-    this.userService.getCurrentUser().subscribe(data =>{
-      var res = JSON.parse(JSON.stringify(data));
-      this.username = res.result.data.content.username;
+    this.userService.getCurrentUsername().subscribe(data =>{
+      this.username = data;
       console.log(data);
     });
   }
