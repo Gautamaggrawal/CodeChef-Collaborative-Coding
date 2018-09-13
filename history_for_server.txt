@@ -1,58 +1,15 @@
-    1  ls
-    2  cd work/
-    3  ls
-    4  npm install --save express
-    5  ls
-    6  git init
-    7  sudo apt-get install git
-    8  apt install git
-    9  sudo apt-get install git-core
-   10  sudo apt-get update
-   11  npm uninstall express
-   12  ls
-   13  rm -r node_modules/
-   14  ls
-   15  rm package-lock.json 
-   16  ls
-   17  mkdir node_server
-   18  mkdir ang_web
-   19  sudo apt-get install git
-   20  cd node_server/
-   21  npm install express
-   22  ls
-   23  cd ..
-   24  ls
-   25  git init
-   26  ls
-   27  sudo apt-get update
-   28  sudo apt-get install build-essential libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext unzip
-   29  git config --global user.name "saurav"
-   30  git config --global user.email "saurav0988@gmail.com"
-   31  git repo
-   32  git --list
-   33  git config --list
-   34  ls
-   35  vi .git/
-   36  cd ..
-   37  cd work/
-   38  ls
-   39  cd ang_web/
-   40  npm install -g @angular/cli
-   41  ls
-   42  npm udate
-   43  npm update
-   44  cd ..
-   45  rm ang_web/
-   46  ls ang_web/
-   47  rm -r ang_web/
-   48  ls
-   49  ng new ang_web
-   50  ng new angweb
-   51  npm audit fix
-   52  cd angweb/
-   53  npm audit fix\
-   54  npm audit fix
-   55  npm update
-   56  ls
-   57  cd ..
-   58  history > history_for_server.txt
+    1  sudo apt-get update
+    2  sudo apt-get install build-essential libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext unzip
+    3  sudo apt-get install git
+    4  git clone https://gitlab.com/saurav0988/CodeChef.git
+    5  npm install -g @angular/cli
+    6  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+    7  nvm install stable
+    8  npm install -g @angular/cli
+    9  cd CodeChef/
+   10  cd angweb/
+   11  npm install
+   12  cd ..
+   13  cd node_server/
+   14  npm install
+   15  cd

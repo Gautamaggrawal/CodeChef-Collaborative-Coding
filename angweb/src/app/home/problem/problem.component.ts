@@ -27,9 +27,22 @@ export class ProblemComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit() {
-
     this.getProblem();
-    
+    this.setupVideoChat();
+  }
+
+  getProblem(): void {
+    const problemCode = this.route.snapshot.paramMap.get('problemCode');
+    console.log(problemCode);
+    this.problemService.getProblem(problemCode)
+    .subscribe(data => {
+      this.problem = data;
+      //console.log(this.problem.result.data.content.body);
+      //console.log(JSON.stringify(data));
+    });
+  }
+
+  setupVideoChat() {
     this.route.queryParams.subscribe(params =>{
       this.lobbyCode = params['video'];
       console.log('lobbyUrl '+this.lobbyCode);
@@ -44,17 +57,6 @@ export class ProblemComponent implements OnInit {
           this.videoShareUrl = window.location.href.split("?")[0] + '?video=' + lobbyCode;
         });
       }
-    });
-  }
-
-  getProblem(): void {
-    const problemCode = this.route.snapshot.paramMap.get('problemCode');
-    console.log(problemCode);
-    this.problemService.getProblem(problemCode)
-    .subscribe(data => {
-      this.problem = data;
-      //console.log(this.problem.result.data.content.body);
-      //console.log(JSON.stringify(data));
     });
   }
 
