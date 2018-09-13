@@ -12,14 +12,21 @@
 </ng-template>
 
 <ng-template #showFrame>
-  <div id="rightCorner">
-    <iframe id="videoFrame" 
-    src="https://tokbox.com/embed/embed/ot-embed.js?embedId=91bd5b16-f7f2-4740-ac72-2cf562a70fd4&room=DEFAULT_ROOM&iframe=true" 
-    scrolling="no" width=350 height=300 allow="microphone; camera" >
+  <div *ngIf="videoApiUrl" id="rightCorner">
+    <iframe
+    [src]="videoApiUrl" scrolling="no" width=350 height=300 allow="microphone; camera" >
     </iframe>
-    <div class="card text-center" id="videoFrame" width=350 height=300;>
-      <button class="card-body" ngxClipboard [cbContent]='videoShareUrl'>{{videoShareUrl}}
-      </button>
+    <div *ngIf="lobbyCode" class="card text-white bg-info mb-3">
+      <div class="card-header">Connected to {{lobbyCode}}</div>
+      <div class="card-body">
+        <button type="button" id="videoBtn" class="btn btn-default btn-light" (click) = "showToast()" ngxClipboard [cbContent]='videoShareUrl'>
+          {{videoShareUrl}} 
+          <i class="material-icons md-18">input</i>
+        </button>
+        <button type="button" id="videoBtn" class="btn btn-default btn-light" (click)="onVideoClosed()">exit</button>
+      </div>
     </div>
   </div>
 </ng-template>
+
+<div id="snackbar">Copied to clipboard</div>
