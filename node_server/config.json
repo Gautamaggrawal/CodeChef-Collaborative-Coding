@@ -1,12 +1,12 @@
 {
-    "angularUrl": ["http://localhost:4200","http://127.0.0.1:4200","http://172.31.85.156:4200"],
+    "angularUrl": ["https://hackercat.ml"],
     
 
     "__comment__redirectUrl":"codechef sends authorization codeto redirectUrl",
-    "redirectUrl": "http://localhost:3000/oauth/codechef",
+    "redirectUrl": "http://149.129.138.74:3000/oauth/codechef",
     
-    "client_id": "21a85d79b82b47b5f2b4041de91efd2f",
-    "client_secret": "74de460280f29a02c6a6c1a43640d295",
+    "client_id": "d2242a87a69d0badf21d7d265e5f686f",
+    "client_secret": "9aba2aea3910ba66df56592b29519511",
     
     "cc_apiUrl" : {
         "baseUrl": "https://api.codechef.com",
