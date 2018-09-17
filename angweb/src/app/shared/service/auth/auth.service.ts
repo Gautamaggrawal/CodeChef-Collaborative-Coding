@@ -10,7 +10,14 @@ export class AuthService {
 
   doLogin(access_token) {
     localStorage.setItem('userToken',access_token);
-    this.router.navigate(['/home']);
+    var returnUrl = localStorage.getItem('returnUrl');
+    console.log("do login" + returnUrl);
+    if(returnUrl != null){
+      localStorage.removeItem('returnUrl');
+      this.router.navigateByUrl(returnUrl);
+    }
+    else
+      this.router.navigate(['/home']);
   }
   
   isAuthenticated() {

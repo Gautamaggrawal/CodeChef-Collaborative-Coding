@@ -11,7 +11,7 @@ import { AuthService } from '../shared/service/auth/auth.service';
 export class LoginComponent implements OnInit {
   
   access_token: string;
-  loginUrl: string;
+  CodeChefloginUrl: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,6 +19,12 @@ export class LoginComponent implements OnInit {
     public authService: AuthService ) { }
 
   ngOnInit() {
+    var returnUrl = this.route.snapshot.queryParams['returnUrl'];
+
+    // saving returnUrl to localStorage
+    if(returnUrl != undefined)
+      localStorage.setItem('returnUrl', returnUrl);
+
     if(this.authService.isAuthenticated()){
       console.log("already logged In");
       this.router.navigate(['/home']);
@@ -29,7 +35,7 @@ export class LoginComponent implements OnInit {
           console.log("access token Recived - " + this.access_token);
           this.authService.doLogin(this.access_token);
         }else{
-          this.loginUrl = environment.codeChefLoginUrl;
+          this.CodeChefloginUrl = environment.codeChefLoginUrl;
         }
       });
     }
