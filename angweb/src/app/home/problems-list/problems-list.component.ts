@@ -15,6 +15,6 @@ export class ProblemsListComponent implements OnInit {
   
   onClickProblem(problemCode) {
     console.log(problemCode);
-    this.router.navigate(['home',problemCode]);
+    this.router.navigate(['home/list',problemCode]);
   }
 }

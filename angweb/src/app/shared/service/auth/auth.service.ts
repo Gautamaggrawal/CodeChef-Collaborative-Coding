@@ -17,7 +17,7 @@ export class AuthService {
       this.router.navigateByUrl(returnUrl);
     }
     else
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home/list']);
   }
   
   isAuthenticated() {
@@ -30,7 +30,7 @@ export class AuthService {
 
   Logout() {
     localStorage.removeItem('userToken');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
 }

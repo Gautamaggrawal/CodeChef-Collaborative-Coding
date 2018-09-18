@@ -33,7 +33,7 @@ export class ProblemComponent implements OnInit {
 
   getProblem(): void {
     const problemCode = this.route.snapshot.paramMap.get('problemCode');
-    console.log(problemCode);
+    console.log("problemCode" + problemCode);
     this.problemService.getProblem(problemCode)
     .subscribe(data => {
       this.problem = data;
