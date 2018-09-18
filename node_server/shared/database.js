@@ -35,10 +35,20 @@ exports.insertUser = function(id, access_token, refresh_token){
 */
 
 exports.updateUser = function(id, access_token, refresh_token) {
-    db.get('users')
-    .find({id: id})
-    .assign({
-      access_token : access_token,
-      refresh_token : refresh_token
-    }).write();
+  db.get('users')
+  .find({id: id})
+  .assign({
+    access_token : access_token,
+    refresh_token : refresh_token
+  }).write();
+}
+
+/*
+    Returns User with matched access_token
+*/
+
+exports.getUser =function(access_token) {
+  return db.get('users')
+  .find({access_token: access_token})
+  .value();
 }

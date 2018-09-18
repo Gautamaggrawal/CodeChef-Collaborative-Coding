@@ -35,3 +35,25 @@ exports.getCodeChefApiConfig = function(url, access_token) {
     
     return codeChefOptions;
 }
+
+// CodeChef Access Token config
+exports.getAccessTokenConfig = function(refresh_token) {
+    
+    var params = {
+        grant_type: 'refresh_token',
+        refresh_token: refresh_token,
+        client_id: config.client_id,
+        client_secret: config.client_secret
+    };
+
+    var accessTokenOptions = {
+        uri: config.cc_apiUrl.token,
+        body: JSON.stringify(params),
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    
+    return accessTokenOptions;
+}
