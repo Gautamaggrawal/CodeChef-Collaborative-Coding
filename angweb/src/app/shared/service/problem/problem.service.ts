@@ -13,4 +13,8 @@ export class ProblemService {
   getProblem(problemCode): Observable<any> {
     return this.http.get<any>(environment.codeChefBaseUrl+'/contests/PRACTICE/problems/'+problemCode);
   }
+
+  getProblemList(category): Observable<any> {
+    return this.http.get<any>(environment.codeChefBaseUrl+'/problems/'+category);
+  }
 }

@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
     if(this.authService.isAuthenticated()){
       console.log('logged In');
       this.getCurrretUser();
-      this.router.navigate(['home/list']);
+      this.router.navigate(['home/problem']);
     } else {
       this.checkAccessToken();
     }

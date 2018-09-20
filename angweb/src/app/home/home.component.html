@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light bg-light ">
-    <a class="navbar-brand" [routerLink]="['/home/list']">CodeChef</a>
+    <a class="navbar-brand" [routerLink]="['/home/problem']">CodeChef</a>
      
     
     <ng-container *ngIf="isLoggedIn;then showLogout else showLogin"></ng-container>
@@ -27,7 +27,7 @@
 <div *ngIf="!isLoggedIn" class="d-flex flex-row justify-content-center align-items-center" style="height: 400px;">
     <div>
         <img src="assets/img/logo.png">
-        <h1 class="description">A New way to start Programming</h1>
+        <h1 class="description">Learn Programming the fun way</h1>
     </div>
 </div>
 

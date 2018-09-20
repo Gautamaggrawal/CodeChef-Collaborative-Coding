@@ -23,7 +23,7 @@ export class AuthService {
       this.router.navigateByUrl(returnUrl);
     }
     else
-      this.router.navigate(['/home/list']);
+      this.router.navigate(['/home/problem']);
   }
   
   isAuthenticated() {

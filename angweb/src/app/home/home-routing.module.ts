@@ -10,12 +10,33 @@ const routes:Routes = [
     path: '',component: HomeComponent,
     children:[
       {
-        path: 'list/:problemCode',
-        component:ProblemComponent,canActivate:[AuthGuard]
+        path: 'problem',
+        redirectTo:'problem/school',
+        pathMatch: 'full'
       },
       {
-        path: 'list',
+        path: 'problem/school',
         component: ProblemsListComponent,canActivate:[AuthGuard]
+      },
+      {
+        path: 'problem/easy',
+        component: ProblemsListComponent,canActivate:[AuthGuard]
+      },
+      {
+        path: 'problem/medium',
+        component: ProblemsListComponent,canActivate:[AuthGuard]
+      },
+      {
+        path: 'problem/hard',
+        component: ProblemsListComponent,canActivate:[AuthGuard]
+      },
+      {
+        path: 'problem/challenge',
+        component: ProblemsListComponent,canActivate:[AuthGuard]
+      },
+      {
+        path: 'problem/:problemCode',
+        component:ProblemComponent,canActivate:[AuthGuard]
       }
     ]
   },{

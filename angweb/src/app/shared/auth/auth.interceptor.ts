@@ -26,7 +26,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     }
                     this.authService.setUserToken(res);
                     console.log(req);
-                    this.router.navigate(['/home/list']);
+                    this.router.navigate(['/home/problem']);
                     return next.handle(this.addAuthenticationToken(req));
                 });
             }
