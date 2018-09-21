@@ -11,18 +11,27 @@ export class ProblemsListComponent implements OnInit {
 
   // categoryName - school,easy,medium,hard,challenge
   categoryName: string;
+  problemsList;
 
   constructor(private router: Router,
     private problemService: ProblemService) { }
 
   ngOnInit() {
-    // returns school from url e.g '/home/problem/school'
-    this.categoryName = this.router.url.substring(14);
+    // returns school from url e.g '/home/school'
+    this.categoryName = this.router.url.substring(6);
     console.log("route -"+this.categoryName);
+    this.getProbemList();
   }
   
   onClickProblem(problemCode) {
     console.log(problemCode);
-    this.router.navigate(['home/problem',problemCode]);
+    this.router.navigate(['home',problemCode]);
+  }
+
+  getProbemList() {
+    this.problemService.getProblemList(this.categoryName).subscribe(data =>{
+      this.problemsList = data.result.data.content;
+      console.log(this.problemsList);
+    });
   }
 }

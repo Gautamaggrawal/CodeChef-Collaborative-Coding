@@ -1,14 +1,26 @@
-<div class="btn-group d-flex align-items-center justify-content-center" style="height: 60px;">
-  <button type="button" class="btn btn-secondary">Beginner</button>
-  <button type="button" class="btn btn-secondary">Easy</button>
-  <button type="button" class="btn btn-secondary">Medium</button>
-  <button type="button" class="btn btn-secondary">Hard</button>
-  <button type="button" class="btn btn-secondary">Challenge </button>
+<div class="btn-group d-flex align-items-center justify-content-center">
+  <button type="button" class="btn btn-secondary" [ngClass]="{'active': categoryName === 'school'}" [routerLink]="['/home/school']" >Beginner</button>
+  <button type="button" class="btn btn-secondary" [ngClass]="{'active': categoryName === 'easy'}" [routerLink]="['/home/easy']">Easy</button>
+  <button type="button" class="btn btn-secondary" [ngClass]="{'active': categoryName === 'medium'}" [routerLink]="['/home/medium']">Medium</button>
+  <button type="button" class="btn btn-secondary" [ngClass]="{'active': categoryName === 'hard'}" [routerLink]="['/home/hard']">Hard</button>
+  <button type="button" class="btn btn-secondary" [ngClass]="{'active': categoryName === 'challenge'}" [routerLink]="['/home/challenge']">Challenge </button>
 </div>
-
-<div>
-  <button type="button" class="btn btn-primary prbButton" (click)="onClickProblem('CHN04')">Solve Problem 1</button>
-  </div>
-  <div>
-  <button type="button" class="btn btn-primary prbButton" (click)="onClickProblem('SEQUENCE')">Solve Problem 2</button>
+<div *ngIf="problemsList" class="container-fluid">
+  <div *ngFor="let prob of problemsList" class="card">
+    <div class="row">
+      <div class="col-sm-10">
+        <div class="card-body">
+          <h5 class="card-title">{{prob.problemName}}</h5>
+          <div class="flex-direction: row">
+            <h6 class="card-subtitle mb-1 text-muted">Accuracy: {{prob.accuracy | number }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Successful Submissions: {{prob.successfulSubmissions}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Code: {{prob.problemCode}}</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2 px-3">
+          <button type="button" class="btn btn-primary prbButton" (click)="onClickProblem(prob.problemCode)">Solve Problem</button>
+      </div>
+    </div>
+  </div>  
 </div>

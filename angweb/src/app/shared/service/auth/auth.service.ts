@@ -19,11 +19,12 @@ export class AuthService {
     var returnUrl = localStorage.getItem('returnUrl');
     console.log("do login" + returnUrl);
     if(returnUrl != null){
+      console.log("return url called" + returnUrl);
       localStorage.removeItem('returnUrl');
       this.router.navigateByUrl(returnUrl);
     }
     else
-      this.router.navigate(['/home/problem']);
+      this.router.navigate(['home/school']);
   }
   
   isAuthenticated() {
@@ -44,7 +45,7 @@ export class AuthService {
   Logout() {
     this.loggedIn(false);
     localStorage.removeItem('userToken');
-    this.router.navigate(['']);
+    this.router.navigate(['home']);
   }
 
   getAccessToken(): Observable<any> {

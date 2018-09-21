@@ -10,39 +10,32 @@ const routes:Routes = [
     path: '',component: HomeComponent,
     children:[
       {
-        path: 'problem',
-        redirectTo:'problem/school',
-        pathMatch: 'full'
+        path: 'school',
+        component: ProblemsListComponent,canActivate: [AuthGuard]
       },
       {
-        path: 'problem/school',
-        component: ProblemsListComponent,canActivate:[AuthGuard]
+        path: 'easy',
+        component: ProblemsListComponent,canActivate: [AuthGuard]
       },
       {
-        path: 'problem/easy',
-        component: ProblemsListComponent,canActivate:[AuthGuard]
+        path: 'medium',
+        component: ProblemsListComponent,canActivate: [AuthGuard]
       },
       {
-        path: 'problem/medium',
-        component: ProblemsListComponent,canActivate:[AuthGuard]
+        path: 'hard',
+        component: ProblemsListComponent,canActivate: [AuthGuard]
       },
       {
-        path: 'problem/hard',
-        component: ProblemsListComponent,canActivate:[AuthGuard]
+        path: 'challenge',
+        component: ProblemsListComponent,canActivate: [AuthGuard]
       },
       {
-        path: 'problem/challenge',
-        component: ProblemsListComponent,canActivate:[AuthGuard]
-      },
-      {
-        path: 'problem/:problemCode',
-        component:ProblemComponent,canActivate:[AuthGuard]
+        path: ':problemCode',
+        component:ProblemComponent,canActivate: [AuthGuard]
       }
     ]
-  },{
-    path:'**',
-    redirectTo:''
-  }
+  },
+  { path: '**', redirectTo:'', pathMatch: 'full'}
 ]
 
 @NgModule({
