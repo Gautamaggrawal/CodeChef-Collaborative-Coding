@@ -1,7 +1,7 @@
 var request = require('request-promise');
 const httpConfig = require('./httpConfig');
 const config = require('../config.json');
-const dbHelper = require('./database');
+const dbHelper = require('./databaseHelper');
 
 
 // Saves Logged In User

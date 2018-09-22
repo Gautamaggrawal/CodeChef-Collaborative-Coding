@@ -9,3 +9,19 @@
   text-align: center;
   margin-top: 20px;
  }
+
+ .topnav-right{
+   margin-right: 10%;
+ }
+
+ .btn-primary {
+  width: 120px;
+ }
+
+ .navbar-brand{
+   margin-left: 10%;
+ }
+
+ .navbar{
+   padding: 0;
+ }

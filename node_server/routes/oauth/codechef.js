@@ -1,7 +1,7 @@
 var express = require('express');
 var config = require('../../config.json');
-var dbHelper = require('../../shared/database');
 var oauthReq = require('../../shared/oauthReq');
+var dbHelper = require('../../shared/databaseHelper');
 
 var router = express.Router();
 

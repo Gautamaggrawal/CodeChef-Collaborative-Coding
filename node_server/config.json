@@ -12,6 +12,8 @@
         "baseUrl": "https://api.codechef.com",
         "loggedInUser" : "https://api.codechef.com/users/me",
         "token": "https://api.codechef.com/oauth/token"
-    }
+    },
+    
+    "mongoDbUrl": "mongodb://root:wvwQ2SgpgSU9i68@dds-6gje75ca9ded60041.mongodb.ap-south-1.rds.aliyuncs.com:3717,dds-6gje75ca9ded60042.mongodb.ap-south-1.rds.aliyuncs.com:3717/admin?replicaSet=mgset-1050001987"
 }
 

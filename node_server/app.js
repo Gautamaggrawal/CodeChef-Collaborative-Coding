@@ -4,10 +4,6 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var config  = require('./config.json');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 var app = express();
 
 app.use(logger('dev'));
@@ -29,7 +25,5 @@ app.use((request,response,next) => {
 });
 
 app.use('/oauth', require('./routes/oauth/codechef'));
-app.use('/', indexRouter);
-app.use('/users/lol', usersRouter);
 
 module.exports = app;
