@@ -1,20 +1,38 @@
+<!--Dialog Box For Share URL-->
+<div *ngIf="showShareDialog && videoShareUrl" class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-body">
+      <span class="deleteMeetingClose" (click)="closeDialogbox()">&times;</span>
+      <p id= "dialogp">Start solving the problem with a friend by sharing this url!</p>
+      <hr>
+      <p id="shareUrlDialog" (click) = "showToast()" ngxClipboard [cbContent]='videoShareUrl'>
+          {{videoShareUrl}}
+      </p>
+    </div>
+  </div>
+</div>
+  
+<!--Problem Statement-->
 <div *ngIf="problem" class="container">
   <h1>{{problem.result.data.content.problemName}}</h1>
   <p [innerHTML]="problem.result.data.content.body"></p>
 </div>
 
+<!--Video Tab Conditon-->
 <ng-container *ngIf="startVideoClicked;then showFrame else showStartVideo"></ng-container>
 
+<!--Video Tab when Enabled-->
 <ng-template #showStartVideo >
   <div id="rightCorner">
     <button class="video" (click)="onStartVideo()">Start Video</button>
   </div>
 </ng-template>
 
+<!--Video Tab when Disabled-->
 <ng-template #showFrame>
   <div *ngIf="videoApiUrl" id="rightCorner">
     <iframe
-    [src]="videoApiUrl" scrolling="no" width=350 height=300 allow="microphone; camera" >
+    [src]="videoApiUrl" scrolling="no" width=400 height=320 allow="microphone; camera" >
     </iframe>
     <div *ngIf="lobbyCode" class="card text-white bg-info mb-3">
       <div class="card-header">Connected to {{lobbyCode}}</div>
@@ -29,4 +47,5 @@
   </div>
 </ng-template>
 
+<!--Snackbar when template Copied-->
 <div id="snackbar">Copied to clipboard</div>

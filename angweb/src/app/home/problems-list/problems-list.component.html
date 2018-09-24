@@ -5,6 +5,11 @@
   <button type="button" class="btn btn-secondary" [ngClass]="{'active': categoryName === 'hard'}" [routerLink]="['/home/hard']">Hard</button>
   <button type="button" class="btn btn-secondary" [ngClass]="{'active': categoryName === 'challenge'}" [routerLink]="['/home/challenge']">Challenge </button>
 </div>
+
+<div class="container-fluid" >
+    <h3 class="font-weight-normal practiceHeader">Practice Problems</h3>
+</div>
+
 <div *ngIf="problemsList" class="container-fluid">
   <div *ngFor="let prob of problemsList" class="card">
     <div class="row">
@@ -19,7 +24,7 @@
         </div>
       </div>
       <div class="col-sm-2 px-3">
-          <button type="button" class="btn btn-primary prbButton" (click)="onClickProblem(prob.problemCode)">Solve Problem</button>
+          <button type="button" class="btn btn-primary prbButton" (click)="onClickProblem(prob.problemCode)">Solve with friend</button>
       </div>
     </div>
   </div>  

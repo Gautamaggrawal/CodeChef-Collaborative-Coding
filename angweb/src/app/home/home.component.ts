@@ -36,11 +36,9 @@ export class HomeComponent implements OnInit {
     if(this.authService.isAuthenticated()){
       console.log('logged In');
       this.getCurrretUser();
-
-      /* to allow returnUrl to function properly and access to home route 
-      *  where home route earlier was getting redirected to home/school after logout.
-      */ 
-      if(localStorage.getItem('returnUrl') == null && this.authService.isAuthenticated())
+      
+      // this enables the logged In user to go to school directly
+      if(this.router.url == '/home')
         this.router.navigate(['home/school']);
 
     } else {

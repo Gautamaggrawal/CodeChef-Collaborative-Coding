@@ -13,12 +13,13 @@ import { environment } from '../../../environments/environment';
 })
 export class ProblemComponent implements OnInit {
 
-  startVideoClicked: boolean = false;
-  queryParamPresent: boolean = false;
-  videoShareUrl: string; 
+  showShareDialog: boolean = true;        //flag to show dialog box
+  startVideoClicked: boolean = true;      //flag to show video tab
+  queryParamPresent: boolean = false;     //flag to check if query param present
+  videoShareUrl: string;                  //video share url 
   problem;
-  lobbyCode: string;
-  videoApiUrl;
+  lobbyCode: string;                      //lobby code for video chat
+  videoApiUrl;                            //video api url
 
   constructor(
     private domSanitizer : DomSanitizer,
@@ -38,7 +39,7 @@ export class ProblemComponent implements OnInit {
     .subscribe(data => {
       this.problem = data;
       //console.log(this.problem.result.data.content.body);
-      //console.log(JSON.stringify(data));
+      console.log(JSON.stringify(data));
     });
   }
 
@@ -70,13 +71,19 @@ export class ProblemComponent implements OnInit {
       window.location.href = window.location.href.split("?")[0];
     }else{
       this.startVideoClicked = false;
+      this.showShareDialog = false;
     }
   }
 
   showToast() {
+    this.showShareDialog = false;
     var x = document.getElementById("snackbar");
     x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1500);
+  }
+
+  closeDialogbox(){
+    this.showShareDialog = false;
   }
 
 }
