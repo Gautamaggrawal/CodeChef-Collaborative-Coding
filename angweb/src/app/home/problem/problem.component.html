@@ -1,5 +1,5 @@
 <!--Dialog Box For Share URL-->
-<div *ngIf="showShareDialog && videoShareUrl" class="modal-dialog">
+<div *ngIf="showShareDialog && videoShareUrl" [@enterAnimation] class="modal-dialog">
   <div class="modal-content">
     <div class="modal-body">
       <span class="deleteMeetingClose" (click)="closeDialogbox()">&times;</span>

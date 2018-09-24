@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from "@angular/platform-browser";
+import { trigger, style, animate, transition } from '@angular/animations';
 
 import { ProblemService } from '../../shared/service/problem/problem.service';
 import { UserService } from '../../shared/service/user.service';
@@ -8,6 +9,16 @@ import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-problem',
+  animations: [
+    trigger(
+      'enterAnimation', [
+        transition(':leave', [
+          style({transform: 'translateX(0)', opacity: 1}),
+          animate('200ms', style({transform: 'translateY(-10%)', opacity: 0}))
+        ])
+      ]
+    )
+  ],
   templateUrl: './problem.component.html',
   styleUrls: ['./problem.component.css']
 })
