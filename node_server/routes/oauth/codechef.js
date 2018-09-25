@@ -25,18 +25,19 @@ router.get('/codechef', function(req, res, next) {
     Returns new Access Token
 */
 router.get('/access_token',function(req,res){
-    var user = dbHelper.getUser(req.query.access_token);
-    console.log('user' + user);
-    if(user != undefined){
-        console.log('old acces_token '+ user.access_token);
-        oauthReq.getNewAccessToken(user.refresh_token).then(data =>{
-            console.log('new acces_token '+ data);
-            res.send(JSON.stringify(data));
-        });
-    }else{
-        res.status(403);
-        res.send(JSON.stringify('Invalid User'));
-    }
+    dbHelper.getUser(req.query.access_token).then(user =>{
+        console.log('user' + user[0]);
+        if(user != undefined){
+            console.log('old acces_token '+ user[0].access_token);
+            oauthReq.getNewAccessToken(user[0].refresh_token).then(data =>{
+                console.log('new acces_token '+ data);
+                res.send(JSON.stringify(data));
+            });
+        }else{
+            res.status(403);
+            res.send(JSON.stringify('Invalid User'));
+        }
+    });
 });
 
 module.exports = router;

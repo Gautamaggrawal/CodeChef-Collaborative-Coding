@@ -56,9 +56,9 @@ exports.insertUser = function(id, access_token, refresh_token){
   */
   
   exports.getUser =function(access_token) {
-      db.find({access_token: access_token},function(err,data){
+      return db.find({access_token: access_token},function(err,data){
         if(err) 
             console.log(err + "databaseHelper.js :: Error at fetching user");
         return data;
-      });
+      }).exec();
   }
