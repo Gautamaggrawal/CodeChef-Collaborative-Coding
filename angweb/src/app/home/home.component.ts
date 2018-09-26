@@ -12,11 +12,11 @@ import { AuthService } from '../shared/service/auth/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  username: string;
-  access_token: string;
-  CodeChefloginUrl: string;
-  isLoggedIn: boolean = false;
-  subscribeLoggedIn;
+  username: string;                       //username of the current user
+  access_token: string;                   //access_token 
+  CodeChefloginUrl: string;               //CodeChef login url
+  isLoggedIn: boolean = false;            //flag is user is logged In
+  subscribeLoggedIn;                      //subscribe to login value in auth service to check if user is logged in across routes
 
   constructor(
     private router: Router,
@@ -25,16 +25,19 @@ export class HomeComponent implements OnInit {
     private authService: AuthService) { }
 
   ngOnInit() {
+    // subscribe to loggedIn in auth service
     this.subscribeLoggedIn = this.authService.isLoggedInChanged.subscribe((value)=>{
       this.isLoggedIn = value;
     });
+
+     // check if returnUrl then present save to localStorage
     var returnUrl = this.route.snapshot.queryParams['returnUrl'];
-    // if returnUrl present save to localStorage
     if(returnUrl != undefined)
       localStorage.setItem('returnUrl', returnUrl);
     
+    // check if user is authenticated else check for access token reciving from server else setup login url
     if(this.authService.isAuthenticated()){
-      console.log('logged In');
+      //console.log('logged In');
       this.getCurrretUser();
       
       // this enables the logged In user to go to school directly
@@ -53,11 +56,11 @@ export class HomeComponent implements OnInit {
   getCurrretUser() {
     this.userService.getCurrentUsername().subscribe(data =>{
       this.username = data;
-      console.log(data);
+      //console.log(data);
     });
   }
 
-
+  // check for access token reciving from server else setup login url
   checkAccessToken() {
     this.route.queryParams.subscribe(params =>{
       this.access_token = params['access_token'];
@@ -71,6 +74,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  // unsubscribe loggedIn
   ngOnDestroy(){
     this.subscribeLoggedIn.unsubscribe();
   }

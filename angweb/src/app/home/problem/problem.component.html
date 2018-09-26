@@ -14,8 +14,8 @@
   
 <!--Problem Statement-->
 <div *ngIf="problem" class="container">
-  <h1>{{problem.result.data.content.problemName}}</h1>
-  <p [innerHTML]="problem.result.data.content.body"></p>
+  <h1>{{problem.problemName}}</h1>
+  <p [innerHTML]="problem.body"></p>
 </div>
 
 <!--Video Tab Conditon-->

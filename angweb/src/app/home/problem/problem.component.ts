@@ -6,6 +6,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 import { ProblemService } from '../../shared/service/problem/problem.service';
 import { UserService } from '../../shared/service/user.service';
 import { environment } from '../../../environments/environment';
+import { Problem } from './problemModel';
 
 @Component({
   selector: 'app-problem',
@@ -28,7 +29,7 @@ export class ProblemComponent implements OnInit {
   startVideoClicked: boolean = true;      //flag to show video tab
   queryParamPresent: boolean = false;     //flag to check if query param present
   videoShareUrl: string;                  //video share url 
-  problem;
+  problem: Problem;                       //problem fetched for probemCode
   lobbyCode: string;                      //lobby code for video chat
   videoApiUrl;                            //video api url
 
@@ -43,38 +44,43 @@ export class ProblemComponent implements OnInit {
     this.setupVideoChat();
   }
 
+  // Fetch problem for problemCode
   getProblem(): void {
     const problemCode = this.route.snapshot.paramMap.get('problemCode');
-    console.log("problemCode" + problemCode);
     this.problemService.getProblem(problemCode)
-    .subscribe(data => {
-      this.problem = data;
-      //console.log(this.problem.result.data.content.body);
-      console.log(JSON.stringify(data));
+    .subscribe(res => {
+      this.problem = res.result.data.content;
     });
   }
 
+  // Setup Video Chat for a particular problemCode and user (hosted or joined)
   setupVideoChat() {
     this.route.queryParams.subscribe(params =>{
       this.lobbyCode = params['video'];
-      console.log('lobbyUrl '+this.lobbyCode);
+
       if(this.lobbyCode != undefined){
-        this.videoApiUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(environment.videoApiUrl + this.lobbyCode);
-        this.queryParamPresent = true; 
-        this.videoShareUrl = window.location.href.split("?")[0] + '?video=' + this.lobbyCode;
+        // gets called when user is invited by friend
+        this.queryParamPresent = true;
+        this.setupVideoApiUrl(this.lobbyCode); 
       }else{
+        // gets called when user is hosting
         this.userService.getUsername().subscribe(lobbyCode => {
           this.lobbyCode = lobbyCode;
-          this.videoApiUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(environment.videoApiUrl + lobbyCode);
-          this.videoShareUrl = window.location.href.split("?")[0] + '?video=' + lobbyCode;
+          this.setupVideoApiUrl(lobbyCode);
         });
       }
     });
   }
 
+  // sanitize the video url and attach lobbyCode to the URL.
+  setupVideoApiUrl(lobbyCode){
+    this.videoApiUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(environment.videoApiUrl + lobbyCode);
+    this.videoShareUrl = window.location.href.split("?")[0] + '?video=' + lobbyCode;
+  }
+
+  // flag set true when start video clicked;
   onStartVideo() {
     this.startVideoClicked = true;
-    console.log(this.startVideoClicked);
   }
 
   onVideoClosed() {

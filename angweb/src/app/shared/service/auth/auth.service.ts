@@ -45,7 +45,7 @@ export class AuthService {
   Logout() {
     this.loggedIn(false);
     localStorage.removeItem('userToken');
-    this.router.navigate(['home']);
+    this.router.navigate(['']);
   }
 
   getAccessToken(): Observable<any> {

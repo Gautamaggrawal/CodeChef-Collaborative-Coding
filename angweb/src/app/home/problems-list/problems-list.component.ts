@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { ProblemService } from '../../shared/service/problem/problem.service';
+import { ProblemList } from './problemListModel';
 
 @Component({
   selector: 'app-problems-list',
@@ -9,17 +11,15 @@ import { ProblemService } from '../../shared/service/problem/problem.service';
 })
 export class ProblemsListComponent implements OnInit {
 
-  // categoryName - school,easy,medium,hard,challenge
-  categoryName: string;
-  problemsList;
+  categoryName: string;                     // categoryName - school,easy,medium,hard,challenge
+  problemsList: ProblemList [];             // list of all the problems
 
   constructor(private router: Router,
     private problemService: ProblemService) { }
 
   ngOnInit() {
-    // returns school from url e.g '/home/school'
+    // get categoryName from url e.g 'school from /home/school'
     this.categoryName = this.router.url.substring(6);
-    console.log("route -"+this.categoryName);
     this.getProbemList();
   }
   
@@ -31,7 +31,6 @@ export class ProblemsListComponent implements OnInit {
   getProbemList() {
     this.problemService.getProblemList(this.categoryName).subscribe(data =>{
       this.problemsList = data.result.data.content;
-      console.log(this.problemsList);
     });
   }
 }
