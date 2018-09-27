@@ -10,6 +10,7 @@ import { Problem } from './problemModel';
 
 @Component({
   selector: 'app-problem',
+  //animation for dialog of share url
   animations: [
     trigger(
       'enterAnimation', [
@@ -81,6 +82,11 @@ export class ProblemComponent implements OnInit {
   // flag set true when start video clicked;
   onStartVideo() {
     this.startVideoClicked = true;
+  }
+
+  // redirect to codechef submit page of the particular problem.
+  onSubmitClick(){
+    window.location.href = environment.codeChefSubmitUrl + this.problem.problemCode;
   }
 
   onVideoClosed() {

@@ -13,9 +13,12 @@
 </div>
   
 <!--Problem Statement-->
-<div *ngIf="problem" class="container">
-  <h1>{{problem.problemName}}</h1>
-  <p [innerHTML]="problem.body"></p>
+<div>
+  <div *ngIf="problem" class="container">
+    <h1>{{problem.problemName}}</h1>
+    <p [innerHTML]="problem.body"></p>
+  </div>
+  <button class="btn btn-default btn-primary submitBtn" role="button" (click)="onSubmitClick()">Submit</button>
 </div>
 
 <!--Video Tab Conditon-->
