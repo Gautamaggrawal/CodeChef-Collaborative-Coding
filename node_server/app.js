@@ -26,4 +26,7 @@ app.use((request,response,next) => {
 
 app.use('/oauth', require('./routes/oauth/codechef'));
 
+//redirect other users accessing the server
+app.use('',function(req,res){res.redirect(config.angularUrl[0])});
+
 module.exports = app;
