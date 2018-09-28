@@ -2,6 +2,7 @@ var request = require('request-promise');
 var httpConfig = require('./httpConfig');
 var codeChefReq = require('./codeChefReq');
 
+// request authorization from codechef
 exports.getAuthorizationToken = function (code){
     return request.post(httpConfig.getAuthConfig(code))
     .then(function(res){
@@ -16,6 +17,7 @@ exports.getAuthorizationToken = function (code){
     });
 }
 
+// request for new access token after expiry of existing one.
 exports.getNewAccessToken = function(refresh_token) {
     return request.post(httpConfig.getAccessTokenConfig(refresh_token)).then(function(res){
         var response = JSON.parse(res);

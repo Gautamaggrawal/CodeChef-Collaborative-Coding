@@ -1,8 +1,9 @@
+    Run the following commands to setup a server for Node and Anular
+    
     1  sudo apt-get update
     2  sudo apt-get install build-essential libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext unzip
     3  sudo apt-get install git
     4  git clone https://gitlab.com/saurav0988/CodeChef.git
-    5  npm install -g @angular/cli
     6  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
     7  nvm install stable
     8  npm install -g @angular/cli
@@ -13,3 +14,15 @@
    13  cd node_server/
    14  npm install
    15  cd
+
+    Running the server
+    
+    1  cd angweb/
+    2  if development
+       - ng serve
+       if prod and ssl certificate is present
+       - ng build --prod
+       - node server.js
+    3  cd ..
+    4  cd node_server/
+    5  npm start

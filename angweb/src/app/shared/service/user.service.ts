@@ -10,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 
 export class UserService {
 
-  public username = new BehaviorSubject<string>('');
+  public username = new BehaviorSubject<string>(''); // subject to let access to username across child routes
 
   constructor(private http:HttpClient) { }
 

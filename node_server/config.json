@@ -1,12 +1,11 @@
 {
-    "angularUrl": ["https://hackercat.ml"],
-    
+    "angularUrl": ["{{Add your domain}}"],
 
     "__comment__redirectUrl":"codechef sends authorization code to redirectUrl",
-    "redirectUrl": "http://hackercat.ml:3000/oauth/codechef",
+    "redirectUrl": "xxxxxxxxxxxxxxx",
     
-    "client_id": "d2242a87a69d0badf21d7d265e5f686f",
-    "client_secret": "9aba2aea3910ba66df56592b29519511",
+    "client_id": "xxxxxxxxxxxxxxx",
+    "client_secret": "xxxxxxxxxxxxxxx",
     
     "cc_apiUrl" : {
         "baseUrl": "https://api.codechef.com",
@@ -14,6 +13,6 @@
         "token": "https://api.codechef.com/oauth/token"
     },
     
-    "mongoDbUrl": "mongodb://root:wvwQ2SgpgSU9i68@dds-6gje75ca9ded60041.mongodb.ap-south-1.rds.aliyuncs.com:3717,dds-6gje75ca9ded60042.mongodb.ap-south-1.rds.aliyuncs.com:3717/admin?replicaSet=mgset-1050001987"
+    "mongoDbUrl": "xxxxxxxxxxxxxxx"
 }
 

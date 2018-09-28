@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// allow cross origin request for a particular url
 app.use((request,response,next) => {
   var allowedOrigins = config.angularUrl;
   var origin = request.headers.origin;

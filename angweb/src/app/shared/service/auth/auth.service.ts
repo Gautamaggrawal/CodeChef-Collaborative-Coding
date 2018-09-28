@@ -8,18 +8,18 @@ import { Observable, Subject } from 'rxjs';
 })
 export class AuthService {
   isLoggedIn: boolean;
-  isLoggedInChanged : Subject<boolean> = new Subject<boolean>();
+  isLoggedInChanged : Subject<boolean> = new Subject<boolean>(); //subject for checking if user is logged In across diffrent stages
 
   constructor(private router: Router,
     private http: HttpClient ) { }
+  
 
+  // does login and check if return url present then redirect to return url
   doLogin(access_token) {
     this.loggedIn(true);
     this.setUserToken(access_token);
     var returnUrl = localStorage.getItem('returnUrl');
-    console.log("do login" + returnUrl);
     if(returnUrl != null){
-      console.log("return url called" + returnUrl);
       localStorage.removeItem('returnUrl');
       this.router.navigateByUrl(returnUrl);
     }
@@ -27,6 +27,7 @@ export class AuthService {
       this.router.navigate(['home/school']);
   }
   
+  // checks if token present at client local storage
   isAuthenticated() {
     if(localStorage.getItem('userToken') != null) {
       this.loggedIn(true);
@@ -37,6 +38,7 @@ export class AuthService {
     }
   }
 
+  //save token to local storage
   setUserToken(token){
     this.loggedIn(true);
     localStorage.setItem('userToken',token);
@@ -54,6 +56,7 @@ export class AuthService {
     return this.http.get<any>('http://localhost:3000/oauth/access_token',params);
   }
 
+  //set subject that user is loggedIn or Logged Out 
   loggedIn(data):void{
     this.isLoggedIn = data;
     this.isLoggedInChanged.next(this.isLoggedIn);
