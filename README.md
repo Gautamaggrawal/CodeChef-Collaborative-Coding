@@ -3,15 +3,15 @@
 Collaborative Coding is a  platform where users can learn with other users, share ideas and create live discussion groups  through voice and video chat. It also users to invite friends and join groups to solve a particular problem.
 
 ## Key Features of Collaborative Coding
-    * Create a discussion group (voice & video)
-    * Invite friends or join other groups
+* Create a discussion group (voice & video)
+* Invite friends or join other groups
 
 ## Tech Stack Used 
-    * Angular
-    * NodeJS
-    * MongoDB
-    * CodeChef API
-    * TOKBOX VIDEO EMBED API
+* Angular
+* NodeJS
+* MongoDB
+* CodeChef API
+* TOKBOX VIDEO EMBED API
 
 ## Configuration 
 
@@ -50,16 +50,15 @@ Collaborative Coding is a  platform where users can learn with other users, shar
 For commands for setup refer setupDev.txt
 
 1.Node installation
-    For Windows 
-    ```
-    https://nodejs.org/en/
-    ```
     
-    For Linux 
-    ```
+   * For Windows 
+   
+    https://nodejs.org/en/
+      
+   * For Linux 
+   
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
     nvm install stable
-    ```
 
 2. Angular web client installation
     ```
@@ -83,7 +82,6 @@ For commands for setup refer setupDev.txt
     * For Node Server 
     ```
     cd CodeChef/node_server
-    ```
     npm install
     ```
     * Start node_server
